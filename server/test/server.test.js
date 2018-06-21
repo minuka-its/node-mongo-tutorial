@@ -56,10 +56,8 @@ describe('POST /todos',()=>{
           done();
         }).catch((e)=>done(e));
       })
-  })
-});
-
-describe('GET /todos',()=>{
+  });
+  
   it('Should get all todos',(done)=>{
     request(app)
       .get('/todos')
@@ -69,6 +67,10 @@ describe('GET /todos',()=>{
       })
       .end(done);
   });
+});
+
+describe('GET /todos',()=>{
+
 });
 
 describe('GET /todos/:id',()=>{
