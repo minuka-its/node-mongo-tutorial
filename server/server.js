@@ -101,6 +101,29 @@ app.get('/todos',(req,res)=>{
       console.log(res.status(404));
     })
   });
+//
+//
+//
+//Users database interations
+//
+//
+//
+  app.use('/users',(req, res)=>{
+      var body = _.pick(req.body,['email','password']);
+      var user = new User(body);
+
+      user.save().then(()=>{
+        console.log('0');
+        return user.generateAuthToken();
+      }).then((token)=>{
+        res.header('x-auth',token).send(user);
+        console.log('2');
+      }).catch((e)=>{
+        console.log('3');
+        res.status(404).send(e);
+
+      });
+  });
 
 app.listen(port, ()=>{
   console.log(`Started on port ${port}`);
