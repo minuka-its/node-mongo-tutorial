@@ -17,7 +17,7 @@ beforeEach((done)=>{
   Todo.remove({}).then(()=>{
     return Todo.insertMany(todos);
   }).then(()=>{done()});
-})
+});
 
 describe('POST /todos',()=>{
   it('Should create a new todo',(done)=>{
