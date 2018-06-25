@@ -115,14 +115,11 @@ app.get('/todos',(req,res)=>{
       var user = new User(body);
 
       user.save().then(()=>{
-        console.log('0');
         return user.generateAuthToken();
       }).then((token)=>{
         res.header('x-auth',token).send(user);
-        console.log('2');
       }).catch((e)=>{
-        console.log('3');
-        res.status(404).send(e);
+        res.status(400).send(e);
 
       });
   });
